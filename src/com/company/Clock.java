@@ -65,8 +65,7 @@ public class Clock {
     }
 
     public void tick() {
-        int timeSecond = getSeconds() + 1;
-        setSeconds(timeSecond);
+        setSeconds(getSeconds() + 1);
     }
 
     public void tickDown() {
