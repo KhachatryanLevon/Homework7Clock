@@ -22,7 +22,7 @@ public class Clock {
             while (hour >= 24) {
                 hour = hour - 24;
             }
-            hours = hours + hour;
+            hours = hour;
         }
     }
 
@@ -32,7 +32,7 @@ public class Clock {
         } else {
             while (second >= 60) {
                 second = second - 60;
-                minutes++;
+                setMinutes(getMinutes() + 1);
             }
             seconds = second;
         }
@@ -54,9 +54,9 @@ public class Clock {
         } else {
             while (minute >= 60) {
                 minute = minute - 60;
-                hours++;
+                setHours(getHours() + 1);
             }
-            minutes = minutes + minute;
+            minutes = minute;
         }
     }
 
@@ -65,16 +65,16 @@ public class Clock {
     }
 
     public void tick() {
-        seconds++;
-        setSeconds(seconds);
+        int timeSecond = getSeconds() + 1;
+        setSeconds(timeSecond);
     }
 
     public void tickDown() {
-        seconds--;
+        setSeconds(getSeconds() - 1);
         if (seconds < 0) {
-            minutes--;
+            setMinutes(getMinutes() - 1);
             if (minutes < 0) {
-                hours--;
+                setHours(getHours() - 1);
                 minutes = 59;
                 if (hours < 0) {
                     hours = 23;
@@ -178,4 +178,6 @@ public class Clock {
         System.out.print(getSeconds() + " seconds");
     }
 }
+
+
 
